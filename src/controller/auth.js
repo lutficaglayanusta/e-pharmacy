@@ -6,11 +6,14 @@ import {
 } from "../service/auth.js";
 
 export const registerController = async (req, res) => {
-  const users = await registerService(req.body);
+  const { users, session } = await registerService(req.body);
 
   res.status(201).json({
     message: "Register successfully",
-    data: users,
+    data: {
+      users,
+      session
+    },
   });
 };
 

@@ -19,7 +19,21 @@ export const registerService = async (payload) => {
     password: hashPassword,
   });
 
-  return users;
+  const accessToken = randomBytes(30).toString("base64");
+  const refreshToken = randomBytes(30).toString("base64");
+
+  const accessTokenValidUntil = new Date(Date.now() + FIFTEEN_MINUTES);
+  const refreshTokenValidUntil = new Date(Date.now() + ONE_DAY);
+
+  const session =  await Session.create({
+    userId: users._id,
+    accessToken,
+    refreshToken,
+    accessTokenValidUntil,
+    refreshTokenValidUntil,
+  });
+
+  return {users, session};
 };
 export const loginService = async (payload) => {
   const user = await User.findOne({ email: payload.email });
