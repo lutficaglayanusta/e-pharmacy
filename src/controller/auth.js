@@ -4,6 +4,7 @@ import {
   refreshService,
   registerService,
 } from "../service/auth.js";
+import { ONE_DAY } from "../constants/index.js";
 
 export const registerController = async (req, res) => {
   const { users, session } = await registerService(req.body);
@@ -12,7 +13,7 @@ export const registerController = async (req, res) => {
     message: "Register successfully",
     data: {
       users,
-      session
+      token: session.accessToken,
     },
   });
 };
