@@ -17,6 +17,7 @@ export const startServer = () => {
         "https://e-pharmacy-frontend-ten.vercel.app",
         "http://localhost:5173",
       ],
+      credentials: true,
     }),
   );
 
