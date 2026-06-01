@@ -13,7 +13,10 @@ export const startServer = () => {
 
   app.use(
     cors({
-      origin: "e-pharmacy-frontend-ten.vercel.app",
+      origin: [
+        "e-pharmacy-frontend-ten.vercel.app",
+        "http://localhost:5173",
+      ] 
     }),
   );
 
