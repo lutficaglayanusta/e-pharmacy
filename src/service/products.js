@@ -12,6 +12,7 @@ export const fetchProductsService = async ({ page, perPage, filter = {} }) => {
   }
 
   if (filter.name) {
+    
     const nameRegex = new RegExp(filter.name, "i");
     productsQuery.where("name").regex(nameRegex);
   }
