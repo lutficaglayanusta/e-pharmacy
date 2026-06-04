@@ -30,3 +30,7 @@ export const fetchProductsService = async ({ page, perPage, filter = {} }) => {
     ...paginationData,
   };
 };
+export const fetchProductByIdService = async (id) => { 
+  const product = await Product.findById(id);
+  return product;
+}
