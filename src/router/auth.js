@@ -8,7 +8,6 @@ import {
 import ctrlWrapper from "../utils/ctrlWrapper.js";
 import { validateBody } from "../middleware/validateBody.js";
 import { createUserSchema, loginSchema } from "../validation/auth.js";
-import { authenticate } from "../middleware/authenticate.js";
 
 const router = Router();
 
@@ -18,7 +17,7 @@ router.post(
   ctrlWrapper(registerController),
 );
 router.post("/login", validateBody(loginSchema), ctrlWrapper(loginController));
-router.get("/logout", authenticate, ctrlWrapper(logoutController));
-router.get("/refresh", authenticate, ctrlWrapper(refreshController));
+router.get("/logout", ctrlWrapper(logoutController));
+router.get("/refresh", ctrlWrapper(refreshController));
 
 export default router;
