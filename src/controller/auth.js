@@ -58,9 +58,7 @@ export const logoutController = async (req, res) => {
   res.status(204).send();
 };
 export const refreshController = async (req, res) => {
-
-  console.log(req.cookies)
-
+  console.log(req.cookies);
 
   const session = await refreshService({
     sessionId: req.cookies.sessionId,
@@ -76,7 +74,8 @@ export const refreshController = async (req, res) => {
     expires: new Date(Date.now() + ONE_DAY),
   });
 
-  res.status(200).json({
+  res.json({
+    status: 200,
     message: "Successfully refreshed a session!",
     data: {
       accessToken: session.accessToken,
