@@ -11,10 +11,14 @@ export const registerController = async (req, res) => {
   res.cookie("refreshToken", session.refreshToken, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
+    sameSite: "none",
+    secure: true,
   });
   res.cookie("sessionId", session._id, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
+    sameSite: "none",
+    secure: true,
   });
 
   res.status(201).json({
@@ -32,10 +36,14 @@ export const loginController = async (req, res) => {
   res.cookie("refreshToken", session.refreshToken, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
+    sameSite: "none",
+    secure: true,
   });
   res.cookie("sessionId", session._id, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
+    sameSite: "none",
+    secure: true,
   });
 
   res.status(200).json({
@@ -68,10 +76,14 @@ export const refreshController = async (req, res) => {
   res.cookie("refreshToken", session.refreshToken, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
+    sameSite: "none",
+    secure: true,
   });
   res.cookie("sessionId", session._id, {
     httpOnly: true,
     expires: new Date(Date.now() + ONE_DAY),
+    sameSite: "none",
+    secure: true,
   });
 
   res.json({
