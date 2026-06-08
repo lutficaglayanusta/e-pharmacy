@@ -6,6 +6,7 @@ import {
   fetchCartController,
   removeFromCartController,
   deleteByOneController,
+  checkoutController,
 } from "../controller/cart.js";
 
 const router = Router();
@@ -16,6 +17,7 @@ router.post("/", ctrlWrapper(addToCartController))
 router.get("/", ctrlWrapper(fetchCartController))
 router.delete("/:cartId", ctrlWrapper(removeFromCartController))
 router.delete("/cart-one/:id", ctrlWrapper(deleteByOneController));
+router.post("/checkout",ctrlWrapper(checkoutController))
 
 
 export default router;

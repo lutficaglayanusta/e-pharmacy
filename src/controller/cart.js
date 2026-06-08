@@ -3,6 +3,7 @@ import {
   fetchCartService,
   removeFromCartService,
   deleteByOneService,
+  checkoutService
 } from "../service/cart.js";
 
 export const addToCartController = async (req, res) => {
@@ -39,5 +40,13 @@ export const deleteByOneController = async (req, res) => {
   res.status(200).json({
     message: "Product removed from cart successfully",
     data: cart,
+  });
+};
+export const checkoutController = async (req, res) => {
+  const order = await checkoutService(req.body,req.user._id);
+
+  res.status(201).json({
+    message: "Added successfully order",
+    data: order,
   });
 };
